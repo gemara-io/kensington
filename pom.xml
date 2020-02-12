@@ -13,7 +13,6 @@
         <kotlin.version>1.3.50</kotlin.version>
         <serialization.version>0.13.0</serialization.version>
         <junit.version>4.12</junit.version>
-        <main.class>de.fhws.applab.towerbridge.demo.TestingKt</main.class>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
