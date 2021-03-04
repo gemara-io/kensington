@@ -1,9 +1,7 @@
 package de.fhws.applab.gemara.kensington.creator
 
 import de.fhws.applab.gemara.towerbridge.models.AbstractModel
-import kotlinx.serialization.Serializable
 
-@Serializable
 class TargetMetaModel(var targetMetaModelName: String) : AbstractModel<IMetaModelVisitor>()
 {
     var root: MetaModel? = null

@@ -1,6 +1,7 @@
 package de.fhws.applab.gemara.kensington.models
 
-enum class MetaModelAttributeType
+
+enum class MetaModelAttributeType()
 {
     BOOLEAN,
     INT,
@@ -10,5 +11,8 @@ enum class MetaModelAttributeType
     DATE,
     TIMESTAMP,
     CLASS,
-    METAMODELCLASS
+    METAMODELENUM,
+    METAMODELCLASS;
+
+    var enumValues = emptyList<String>()
 }

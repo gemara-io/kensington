@@ -2,9 +2,7 @@ package de.fhws.applab.gemara.kensington.creator
 
 import de.fhws.applab.gemara.kensington.models.MetaModelAttributeType
 import de.fhws.applab.gemara.towerbridge.models.AbstractModel
-import kotlinx.serialization.Serializable
 
-@Serializable
 class TargetMetaModelAttribute(
         var sourceAttributeName: String,
         var targetAttributeName: String,
