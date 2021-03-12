@@ -11,8 +11,5 @@ enum class MetaModelAttributeType()
     DATE,
     TIMESTAMP,
     CLASS,
-    METAMODELENUM,
     METAMODELCLASS;
-
-    var enumValues = emptyList<String>()
 }
