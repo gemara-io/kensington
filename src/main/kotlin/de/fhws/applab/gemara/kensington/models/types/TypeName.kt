@@ -1,7 +1,7 @@
-package de.fhws.applab.gemara.kensington.models
+package de.fhws.applab.gemara.kensington.models.types
 
 
-enum class MetaModelAttributeType()
+enum class TypeName()
 {
     BOOLEAN,
     INT,

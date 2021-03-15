@@ -8,7 +8,7 @@ import kotlinx.serialization.Serializable
 class MetaModel(var metaModelName: String) : AbstractModel<IMetaModelVisitor>()
 {
     var root: MetaModels? = null
-    var artefactFileName = ""
+    var createArtefact = false
     val attributes = mutableListOf<MetaModelAttribute>()
 
     fun addAttribute(metaModelAttribute: MetaModelAttribute)
