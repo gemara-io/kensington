@@ -8,4 +8,9 @@ class ParameterizedType(var rawType: RawType = RawType.LIST, vararg _typeArgumen
     {
         this.typeArguments = _typeArguments.toMutableList()
     }
+
+    override fun accept(visitor: ITypeVisitor)
+    {
+        TODO("Not yet implemented")
+    }
 }

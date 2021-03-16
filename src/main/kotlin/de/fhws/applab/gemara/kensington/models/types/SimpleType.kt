@@ -16,4 +16,8 @@ class SimpleType(var typeName: TypeName = TypeName.STRING) : AttributeType()
         this.className = _refMetaModel.metaModelName
     }
 
+    override fun accept(visitor: ITypeVisitor)
+    {
+        TODO("Not yet implemented")
+    }
 }
