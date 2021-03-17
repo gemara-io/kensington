@@ -1,7 +1,9 @@
 package de.fhws.applab.gemara.kensington.models.types
 
 import de.fhws.applab.gemara.kensington.models.MetaModel
+import kotlinx.serialization.Serializable
 
+@Serializable
 class SimpleType(var typeName: TypeName = TypeName.STRING) : AttributeType()
 {
     var className = ""

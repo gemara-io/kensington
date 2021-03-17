@@ -66,6 +66,12 @@
             <artifactId>towerbridge</artifactId>
             <version>0.1-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>com.charleskorn.kaml</groupId>
+            <artifactId>kaml</artifactId>
+            <version>0.28.3</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>

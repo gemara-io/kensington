@@ -1,13 +1,11 @@
 package de.fhws.applab.gemara.kensington.models.types
 
-class ParameterizedType(var rawType: RawType = RawType.LIST, vararg _typeArguments: SimpleType) : AttributeType()
+import kotlinx.serialization.Serializable
+
+@Serializable
+class ParameterizedType(var rawType: RawType = RawType.LIST) : AttributeType()
 {
     var typeArguments = mutableListOf<SimpleType>()
-
-    init
-    {
-        this.typeArguments = _typeArguments.toMutableList()
-    }
 
     override fun accept(visitor: ITypeVisitor)
     {
