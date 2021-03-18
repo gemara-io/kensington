@@ -9,25 +9,38 @@ import org.junit.Test
 
 class TestMetaModelAttributeType
 {
-    @Test
-    fun test()
-    {
-        var resource = MetaModel("Resource")
-        var resourceName = MetaModelAttribute("resourceName", SimpleType(TypeName.STRING))
+	@Test
+	fun test()
+	{
+		val queryParameterMetaModel = MetaModel("QueryParameter")
+		val javaExpressionForQueryValue = MetaModelAttribute(
+			"javaExpressionForQueryValue", SimpleType(TypeName.STRING)
+		)
+		queryParameterMetaModel.addAttribute(javaExpressionForQueryValue)
 
-        var paramTypeListOfString = ParameterizedType(RawType.LIST)
-        paramTypeListOfString.typeArguments.add(SimpleType(TypeName.STRING))
-        var listOfStrings = MetaModelAttribute("listOfString", paramTypeListOfString)
+		val queryMetaModel = MetaModel("Query")
+		val queryParametersAttribute = MetaModelAttribute(
+			"queryParameters", ParameterizedType(RawType.LIST, listOf(SimpleType(queryMetaModel)))
+		)
+		queryMetaModel.addAttribute(queryParametersAttribute)
 
-        var paramTypeMapOfStringToInt = ParameterizedType(RawType.MAP)
-        paramTypeMapOfStringToInt.typeArguments.addAll(listOf(SimpleType(TypeName.STRING), SimpleType(TypeName.INT)))
+		val primaryCollectionStateMetaModel = MetaModel("GetPrimaryCollectionResourceByQueryState")
+		val queryAttribute = MetaModelAttribute("query", SimpleType(queryMetaModel))
+		primaryCollectionStateMetaModel.addAttribute(queryAttribute)
 
-        var mapOfStringToInt = MetaModelAttribute("map", paramTypeMapOfStringToInt)
+		val simpleTextWithConfigWidgetMetaModel = MetaModel("SimpleTextWithConfigurationDisplayWidgetUiModel")
+		val configurationAttribute = MetaModelAttribute(
+			"configuration",
+			ParameterizedType(RawType.MAP, listOf(SimpleType(TypeName.INT), SimpleType(TypeName.STRING)))
+		)
+		simpleTextWithConfigWidgetMetaModel.addAttribute(configurationAttribute)
 
-        resource.addAttribute(listOfStrings)
-        resource.addAttribute(mapOfStringToInt)
+		val metaModels = MetaModels("enfield2", "de.fhws.applab.gemara")
+		metaModels.addMetaModel(queryParameterMetaModel)
+		metaModels.addMetaModel(queryMetaModel)
+		metaModels.addMetaModel(primaryCollectionStateMetaModel)
+		metaModels.addMetaModel(simpleTextWithConfigWidgetMetaModel)
 
-        println(Yaml.default.encodeToString(MetaModel.serializer(), resource))
-    }
-
+		println(Yaml.default.encodeToString(MetaModel.serializer(), primaryCollectionStateMetaModel))
+	}
 }
