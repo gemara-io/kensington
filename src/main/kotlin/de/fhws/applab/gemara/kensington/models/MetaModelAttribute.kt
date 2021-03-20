@@ -7,13 +7,15 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 class MetaModelAttribute(
-	var attributeName: String,
-	var type: AttributeType = AttributeType(TypeName.STRING)
+    var attributeName: String,
+    var type: AttributeType = AttributeType(TypeName.STRING)
 ) : AbstractModel<IMetaModelVisitor>()
 {
-	override fun accept(visitor: IMetaModelVisitor)
-	{
-		visitor.enterMetaModelAttribute(this)
-		visitor.exitMetaModelAttribute(this)
-	}
+    var defaultValue: String = ""
+	
+    override fun accept(visitor: IMetaModelVisitor)
+    {
+        visitor.enterMetaModelAttribute(this)
+        visitor.exitMetaModelAttribute(this)
+    }
 }
