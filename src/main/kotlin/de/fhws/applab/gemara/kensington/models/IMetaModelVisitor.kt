@@ -13,6 +13,14 @@ interface IMetaModelVisitor : IVisitor
     {
     }
 
+    fun enterMetaEnum(metaEnum: MetaEnum)
+    {
+    }
+
+    fun exitMetaEnum(metaEnum: MetaEnum)
+    {
+    }
+    
     fun enterMetaModel(metaModel: MetaModel)
     {
     }
@@ -23,7 +31,7 @@ interface IMetaModelVisitor : IVisitor
 
     fun enterMetaModelAttribute(attribute: MetaModelAttribute)
     {
-        
+
     }
 
     fun exitMetaModelAttribute(attribute: MetaModelAttribute)
