@@ -10,6 +10,9 @@ enum class TypeName()
     STRING,
     DATE,
     TIMESTAMP,
+    ENUM,
+    LIST,
+    MAP,
     CLASS,
     METAMODELCLASS;
 }

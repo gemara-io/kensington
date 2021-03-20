@@ -72,6 +72,11 @@
             <version>0.28.3</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.jetbrains.kotlinx</groupId>
+            <artifactId>kotlinx-serialization-runtime</artifactId>
+            <version>1.0-M1-1.4.0-rc</version>
+        </dependency>
     </dependencies>
 
     <build>

@@ -1,9 +1,7 @@
 package de.fhws.applab.gemara.kensington.models
 
 import com.charleskorn.kaml.Yaml
-import de.fhws.applab.gemara.kensington.models.types.ParameterizedType
-import de.fhws.applab.gemara.kensington.models.types.RawType
-import de.fhws.applab.gemara.kensington.models.types.SimpleType
+import de.fhws.applab.gemara.kensington.models.types.AttributeType
 import de.fhws.applab.gemara.kensington.models.types.TypeName
 import org.junit.Test
 
@@ -14,24 +12,29 @@ class TestMetaModelAttributeType
 	{
 		val queryParameterMetaModel = MetaModel("QueryParameter")
 		val javaExpressionForQueryValue = MetaModelAttribute(
-			"javaExpressionForQueryValue", SimpleType(TypeName.STRING)
+			"javaExpressionForQueryValue", AttributeType(TypeName.STRING)
 		)
 		queryParameterMetaModel.addAttribute(javaExpressionForQueryValue)
 
 		val queryMetaModel = MetaModel("Query")
 		val queryParametersAttribute = MetaModelAttribute(
-			"queryParameters", ParameterizedType(RawType.LIST, listOf(SimpleType(queryMetaModel)))
+			"queryParameters", AttributeType(TypeName.LIST, listOf(AttributeType(queryMetaModel)))
+		)
+		val sortOrderEnum = MetaEnum("SortOrder", listOf("DESCENDING", "ASCENDING"))
+		val sortOrderAttribute = MetaModelAttribute(
+			"sortOrder", AttributeType(sortOrderEnum)
 		)
 		queryMetaModel.addAttribute(queryParametersAttribute)
+		queryMetaModel.addAttribute(sortOrderAttribute)
 
 		val primaryCollectionStateMetaModel = MetaModel("GetPrimaryCollectionResourceByQueryState")
-		val queryAttribute = MetaModelAttribute("query", SimpleType(queryMetaModel))
+		val queryAttribute = MetaModelAttribute("query", AttributeType(queryMetaModel))
 		primaryCollectionStateMetaModel.addAttribute(queryAttribute)
 
 		val simpleTextWithConfigWidgetMetaModel = MetaModel("SimpleTextWithConfigurationDisplayWidgetUiModel")
 		val configurationAttribute = MetaModelAttribute(
 			"configuration",
-			ParameterizedType(RawType.MAP, listOf(SimpleType(TypeName.INT), SimpleType(TypeName.STRING)))
+			AttributeType(TypeName.MAP, listOf(AttributeType(TypeName.INT), AttributeType(TypeName.STRING)))
 		)
 		simpleTextWithConfigWidgetMetaModel.addAttribute(configurationAttribute)
 
@@ -41,6 +44,8 @@ class TestMetaModelAttributeType
 		metaModels.addMetaModel(primaryCollectionStateMetaModel)
 		metaModels.addMetaModel(simpleTextWithConfigWidgetMetaModel)
 
-		println(Yaml.default.encodeToString(MetaModel.serializer(), primaryCollectionStateMetaModel))
+		metaModels.addMetaEnum(sortOrderEnum)
+
+		println(Yaml.default.encodeToString(MetaModels.serializer(), metaModels))
 	}
 }
