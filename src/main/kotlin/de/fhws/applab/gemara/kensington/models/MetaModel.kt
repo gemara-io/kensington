@@ -9,19 +9,21 @@ import kotlinx.serialization.Transient
 class MetaModel(var metaModelName: String) : AbstractModel<IMetaModelVisitor>()
 {
     @Transient
-	var root = MetaModels("", "")
-	var createArtefact = false
-	val attributes = mutableListOf<MetaModelAttribute>()
+    var root = MetaModels("", "")
+    var createArtefact = false
+    var abstractClass = false
+    var extendsMetaModels = mutableListOf<String>()
+    val attributes = mutableListOf<MetaModelAttribute>()
 
-	fun addAttribute(metaModelAttribute: MetaModelAttribute)
-	{
-		attributes.add(metaModelAttribute)
-	}
+    fun addAttribute(metaModelAttribute: MetaModelAttribute)
+    {
+        attributes.add(metaModelAttribute)
+    }
 
-	override fun accept(visitor: IMetaModelVisitor)
-	{
-		visitor.enterMetaModel(this)
-		accept(visitor, attributes)
-		visitor.exitMetaModel(this)
-	}
+    override fun accept(visitor: IMetaModelVisitor)
+    {
+        visitor.enterMetaModel(this)
+        accept(visitor, attributes)
+        visitor.exitMetaModel(this)
+    }
 }
