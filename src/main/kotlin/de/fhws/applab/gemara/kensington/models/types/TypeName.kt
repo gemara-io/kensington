@@ -1,7 +1,7 @@
 package de.fhws.applab.gemara.kensington.models.types
 
 
-enum class TypeName()
+enum class TypeName
 {
     BOOLEAN,
     INT,
