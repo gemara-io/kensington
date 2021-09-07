@@ -69,7 +69,7 @@
         <dependency>
             <groupId>com.charleskorn.kaml</groupId>
             <artifactId>kaml</artifactId>
-            <version>0.28.3</version>
+            <version>0.35.2</version>
             <scope>test</scope>
         </dependency>
         <dependency>
