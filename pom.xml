@@ -10,7 +10,7 @@
     <version>0.1-SNAPSHOT</version>
 
     <properties>
-        <kotlin.version>1.4.31</kotlin.version>
+        <kotlin.version>1.6.0</kotlin.version>
         <serialization.version>1.1.0</serialization.version>
         <junit.version>4.12</junit.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
